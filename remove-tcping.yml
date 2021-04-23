@@ -1,0 +1,22 @@
+---
+- hosts: server
+  remote_user: root
+
+  tasks:
+    - name: remove tcping
+      yum: 
+        name: tcping
+        state: installed
+#    - name: ip
+    - debug:
+        msg: "{{ ansible_all_ipv4_addresses }}"
+    - name: touch
+      file:
+        path: /root/v_zjjshen
+        state: directory
+
+    - name: copy text.py
+      copy:
+        src: /root/ansible-zjj/test.py
+        dest: /root/v_zjjshen/
+
